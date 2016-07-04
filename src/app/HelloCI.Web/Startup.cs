@@ -8,7 +8,7 @@ namespace HelloCI.Web
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(ap);
+            ConfigureAuth(app);
         }
     }
 }
