@@ -1,0 +1,5 @@
+C:\GitHub\tcdemo\buildartifacts\HelloCI.Core.dll
+C:\GitHub\tcdemo\buildartifacts\HelloCI.Core.pdb
+C:\GitHub\tcdemo\src\app\HelloCI.Core\obj\Release\HelloCI.Core.csprojResolveAssemblyReference.cache
+C:\GitHub\tcdemo\src\app\HelloCI.Core\obj\Release\HelloCI.Core.dll
+C:\GitHub\tcdemo\src\app\HelloCI.Core\obj\Release\HelloCI.Core.pdb

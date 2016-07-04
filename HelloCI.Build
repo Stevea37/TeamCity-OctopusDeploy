@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0" DefaultTargets="StartWebsite">
+
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <BuildArtifacts Include=".\buildartifacts\"/>
+    <SolutionFile Include=".\HelloCI.sln"/>
+    <Cassini Include="C:\Program Files (x86)\IIS Express\iisexpress.exe"/>
+    <Website Include=".\buildartifacts\_PublishedWebsites\HelloCI.Web"/>
+    <RoslynFiles Include=".\buildartifacts\_PublishedWebsites\bin\roslyn\*" />
+  </ItemGroup>
+  
+  <Target Name="Clean">
+    <RemoveDir Directories="@(BuildArtifacts)"/>
+  </Target>
+
+  <Target Name="Init" DependsOnTargets="Clean">
+    <MakeDir Directories="@(BuildArtifacts)"/>
+  </Target>
+
+  <Target Name="Compile" DependsOnTargets="Init">
+    <MSBuild Projects="@(SolutionFile)" Targets="Rebuild" Properties="OutDir=%(BuildArtifacts.FullPath);Configuration=$(Configuration)"/>
+  </Target>
+
+  <Target Name="StartWebsite" DependsOnTargets="StopWebsite">
+    <Exec Command='"@(Cassini)" /port:9999 /path:"%(Website.FullPath)"'/>
+  </Target>
+
+  <Target Name='StopWebsite' DependsOnTargets='Compile'>
+    <Exec Command='taskkill /f /im iisexpress.exe' IgnoreExitCode='true' IgnoreStandardErrorWarningFormat='true'/>
+  </Target>
+
+  <Target Name="CopyRoslynFiles" DependsOnTargets="Compile">   
+    <MakeDir Directories="@(Website)\bin\roslyn" />
+    <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="@(Website)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
+  </Target>
+  
+</Project>

@@ -3,3 +3,8 @@ C:\GitHub\CLD-REPO\HelloCI\HelloCI\src\app\HelloCI.Core\bin\Debug\HelloCI.Core.p
 C:\GitHub\CLD-REPO\HelloCI\HelloCI\src\app\HelloCI.Core\obj\Debug\HelloCI.Core.csprojResolveAssemblyReference.cache
 C:\GitHub\CLD-REPO\HelloCI\HelloCI\src\app\HelloCI.Core\obj\Debug\HelloCI.Core.dll
 C:\GitHub\CLD-REPO\HelloCI\HelloCI\src\app\HelloCI.Core\obj\Debug\HelloCI.Core.pdb
+C:\GitHub\tcdemo\buildartifacts\HelloCI.Core.dll
+C:\GitHub\tcdemo\buildartifacts\HelloCI.Core.pdb
+C:\GitHub\tcdemo\src\app\HelloCI.Core\obj\Debug\HelloCI.Core.csprojResolveAssemblyReference.cache
+C:\GitHub\tcdemo\src\app\HelloCI.Core\obj\Debug\HelloCI.Core.dll
+C:\GitHub\tcdemo\src\app\HelloCI.Core\obj\Debug\HelloCI.Core.pdb
