@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0" DefaultTargets="StartWebsite">
-
+ <UsingTask AssemblyFile=".\packages\MSBuild.Extension.Pack.1.8.0\tools\net40\MSBuild.ExtensionPack.dll" TaskName="MSBuild.ExtensionPack.Framework.AsyncExec"/>
+  
   <PropertyGroup>
     <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
   </PropertyGroup>
@@ -26,7 +27,7 @@
   </Target>
 
   <Target Name="StartWebsite" DependsOnTargets="StopWebsite">
-    <Exec Command='"@(Cassini)" /port:9999 /path:"%(Website.FullPath)"'/>
+    <MSBuild.ExtensionPack.Framework.AsyncExec Command='"@(Cassini)" /port:9999 /path:"%(Website.FullPath)"'/>
   </Target>
 
   <Target Name='StopWebsite' DependsOnTargets='Compile'>
@@ -37,5 +38,5 @@
     <MakeDir Directories="@(Website)\bin\roslyn" />
     <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="@(Website)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
   </Target>
-  
+
 </Project>
